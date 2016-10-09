@@ -374,6 +374,7 @@ NSString *const kSelectorWithStoryboardId = @"selectorWithStoryboardId";
                                                                   action:@selector(disableEnable:)];
     barButton.possibleTitles = [NSSet setWithObjects:@"Disable", @"Enable", nil];
     self.navigationItem.rightBarButtonItem = barButton;
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 -(void)disableEnable:(UIBarButtonItem *)button
