@@ -141,6 +141,7 @@
     self.tableView.allowsSelectionDuringEditing = YES;
     self.form.delegate = self;
     _oldBottomTableContentInset = nil;
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 -(void)viewWillAppear:(BOOL)animated

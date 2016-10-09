@@ -44,13 +44,15 @@
 
 - (void)configure
 {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)update
 {
     self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textLabel.textColor  = self.rowDescriptor.isDisabled ? [UIColor grayColor] : [UIColor blackColor];
+    self.detailTextLabel.textColor = [UIColor lightTextColor];
+    self.textLabel.textColor  = self.rowDescriptor.isDisabled ? [UIColor grayColor] : [UIColor whiteColor];
 }
 
 -(void)highlight

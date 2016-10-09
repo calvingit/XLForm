@@ -93,9 +93,13 @@
     return 216.0f;
 }
 
+- (NSAttributedString *)whiteColorString:(NSString *)strTitle{
+    return [[NSAttributedString alloc] initWithString:strTitle attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
 #pragma mark - UIPickerViewDelegate
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if (self.inlineRowDescriptor){
 		if (self.inlineRowDescriptor.valueTransformer){
@@ -103,10 +107,10 @@
 			NSValueTransformer * valueTransformer = [self.inlineRowDescriptor.valueTransformer new];
 			NSString * tranformedValue = [valueTransformer transformedValue:[[self.inlineRowDescriptor.selectorOptions objectAtIndex:row] valueData]];
 			if (tranformedValue){
-				return tranformedValue;
+				return [self whiteColorString: tranformedValue];
 			}
 		}
-        return [[self.inlineRowDescriptor.selectorOptions objectAtIndex:row] displayText];
+        return [self whiteColorString:[[self.inlineRowDescriptor.selectorOptions objectAtIndex:row] displayText]];
     }
 	
 	if (self.rowDescriptor.valueTransformer){
@@ -114,10 +118,10 @@
 		NSValueTransformer * valueTransformer = [self.rowDescriptor.valueTransformer new];
 		NSString * tranformedValue = [valueTransformer transformedValue:[[self.rowDescriptor.selectorOptions objectAtIndex:row] valueData]];
 		if (tranformedValue){
-			return tranformedValue;
+            return [self whiteColorString: tranformedValue];
 		}
 	}
-    return [[self.rowDescriptor.selectorOptions objectAtIndex:row] displayText];
+    return [self whiteColorString:[[self.inlineRowDescriptor.selectorOptions objectAtIndex:row] displayText]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
