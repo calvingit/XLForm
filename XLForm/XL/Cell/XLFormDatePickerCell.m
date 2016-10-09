@@ -44,6 +44,18 @@
     if (_datePicker) return _datePicker;
     _datePicker = [UIDatePicker autolayoutView];
     [_datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    //change datePicker's text color
+    [_datePicker setValue:[UIColor whiteColor] forKeyPath:@"textColor"];
+    SEL selector = NSSelectorFromString(@"setHighlightsToday:");
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature :
+                                [UIDatePicker
+                                 instanceMethodSignatureForSelector:selector]];
+    BOOL no = NO;
+    [invocation setSelector:selector];
+    [invocation setArgument:&no atIndex:2];
+    [invocation invokeWithTarget:_datePicker];
+    
     return _datePicker;
 }
 

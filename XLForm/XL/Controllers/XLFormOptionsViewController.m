@@ -99,6 +99,8 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

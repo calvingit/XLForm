@@ -94,7 +94,11 @@
 }
 
 - (NSAttributedString *)whiteColorString:(NSString *)strTitle{
-    return [[NSAttributedString alloc] initWithString:strTitle attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    if (strTitle) {
+            return [[NSAttributedString alloc] initWithString:strTitle attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    }else{
+        return strTitle;
+    }
 }
 
 #pragma mark - UIPickerViewDelegate
