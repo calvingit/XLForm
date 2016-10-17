@@ -89,6 +89,18 @@
     [self.datePicker setUserInteractionEnabled:![self.rowDescriptor isDisabled]];
 }
 
+- (void)layoutSubviews{
+    //修改分割线为白色
+    UIView * pickerView = _datePicker.subviews.firstObject;
+    if (pickerView) {
+        for (UIView *subView in pickerView.subviews ){
+            if (subView.frame.size.height <= 1) {
+                subView.backgroundColor = [UIColor whiteColor];
+            }
+        }
+    }
+}
+
 
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {

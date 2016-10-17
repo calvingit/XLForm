@@ -88,6 +88,15 @@
     
 }
 
+- (void)layoutSubviews{
+    //设置分割线的颜色为白色
+    for (UIView *subview in self.pickerView.subviews) {
+        if (subview.frame.size.height <= 1){
+            subview.backgroundColor = [UIColor whiteColor];
+        }
+    }
+}
+
 +(CGFloat)formDescriptorCellHeightForRowDescriptor:(XLFormRowDescriptor *)rowDescriptor
 {
     return 216.0f;
